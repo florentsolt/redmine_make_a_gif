@@ -14,8 +14,7 @@ class GifUploaderController < ApplicationController
     name = File.basename(params[:file].original_filename)
     dest = File.join(ROOT, name)
     Dir.mkdir(ROOT) if not File.exists?(ROOT)
-    File.unlink(dest) if File.exists?(dest)
-    FileUtils.mv(params[:file].tempfile.path, dest)
+    FileUtils.mv(params[:file].tempfile.path, dest) if not File.exists?(dest)
     render :text => name.to_json, :status => 200
   end
 
