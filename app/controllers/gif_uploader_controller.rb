@@ -7,6 +7,8 @@ class GifUploaderController < ApplicationController
   def download
     name = File.basename(params[:filename] + '.gif')
     file = File.join(ROOT, name)
+    expires_in 10.years, :public => true
+    fresh_when etag: name
     send_file file, :filename => name, :disposition => 'inline'
   end
 
