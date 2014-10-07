@@ -1,0 +1,15 @@
+<h2>Last gifs</h2>
+<div id="gifs">
+	<% @gifs.each do |gif| %>
+		<div style="float:left; margin: 1em">
+			<img src="/gif/<%= gif[:name] %>"/>
+			<br>
+			<em>by <%= gif[:user] %></em>
+		</div>
+	<% end %>
+
+</div>
+
+<hr>
+
+<%= pagination_links_full @pages, @count %>

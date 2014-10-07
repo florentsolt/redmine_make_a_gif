@@ -15,18 +15,15 @@
                             alert(error);
                         }
                     } else {
-                        var date = new Date().toISOString().replace(/\D/g, '').slice(0, 14);
-                        var filename = date + '-' + Math.floor(Math.random() * 1e6) + '.gif';
-
                         var form = new FormData();
-                        form.append('file', data, filename);
+                        form.append('file', data, "movie.gif");
 
                         var request = new XMLHttpRequest();
                         request.open('POST', '/gif/upload', true);
                         request.send(form);
                         request.onload = function (e) {
                             if (request.status === 200) {
-                                toolbar.encloseLineSelection('!/gif/' + filename + '!', '');
+                                toolbar.encloseLineSelection('!/gif/' + request.response + '!', '');
                             }
                         };
                     }

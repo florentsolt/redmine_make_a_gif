@@ -3,3 +3,4 @@
 
 match '/gif/:filename.gif', :to => 'gif_uploader#download'
 match '/gif/upload', :to => 'gif_uploader#upload'
+match '/gif/gallery', :to => 'gif_uploader#gallery'

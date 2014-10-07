@@ -4,6 +4,7 @@ Redmine::Plugin.register :redmine_make_a_gif do
   description 'This is a plugin for Redmine'
   version '0.0.1'
   url 'https://github.com/florentsolt/redmine-make-a-gif'
+  menu :top_menu, :gifs, { :controller => 'gif_uploader', :action => 'gallery' }, :caption => 'Gifs Gallery'
 end
 
 class MakeAGifViewListener < Redmine::Hook::ViewListener
@@ -27,3 +28,5 @@ module Redmine::WikiFormatting::Textile::Helper
 
   alias_method_chain :heads_for_wiki_formatter, :make_a_gif
 end
+
+
