@@ -16,7 +16,7 @@ class GifUploaderController < ApplicationController
     dest = File.join(ROOT, name)
     Dir.mkdir(ROOT) if not File.exists?(ROOT)
     FileUtils.mv(params[:file].tempfile.path, dest) if not File.exists?(dest)
-    render :text => name.to_json, :status => 200
+    render :text => name, :status => 200
   end
 
   def gallery
