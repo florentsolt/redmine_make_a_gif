@@ -1,3 +1,0 @@
-= redmine_make_a_gif
-
-Description goes here
