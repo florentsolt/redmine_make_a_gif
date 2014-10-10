@@ -1,9 +1,9 @@
 Redmine::Plugin.register :redmine_make_a_gif do
   name 'Redmine Make A Gif plugin'
   author 'Benoit Zugmeyer & Florent Solt'
-  description 'This is a plugin for Redmine'
+  description 'Add gifs in isssues and wiki pages'
   version '0.0.1'
-  url 'https://github.com/florentsolt/redmine-make-a-gif'
+  url 'https://github.com/florentsolt/redmine_make_a_gif'
   menu :top_menu, :gifs, { :controller => 'gif_uploader', :action => 'gallery' }, :caption => 'Gifs Gallery'
 end
 
