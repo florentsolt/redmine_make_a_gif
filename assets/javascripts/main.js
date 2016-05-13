@@ -70,7 +70,7 @@ var makeAGif = (function () {
                     });
 
                     function onFrameCaptured(data) {
-                        stream.stop();
+                        stream.getTracks()[0].stop();
                         container.removeChild(videoElement);
                         confirm(data);
                     }
