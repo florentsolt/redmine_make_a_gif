@@ -4,11 +4,17 @@
 
     window.URL = window.URL || window.webkitURL || window.mozURL || window.msURL;
 
-    navigator.getMedia = ( navigator.getUserMedia ||
-        navigator.webkitGetUserMedia ||
-        navigator.mozGetUserMedia ||
-        navigator.msGetUserMedia
-    );
+    var getMedia;
+
+    var getMediaNewAPI = navigator.mediaDevices && navigator.mediaDevices.getUserMedia;
+    var getMediaOldAPI = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
+
+    if (getMediaNewAPI) {
+        getMedia = getMediaNewAPI.bind(navigator.mediaDevices);
+    }
+    else if (getMediaOldAPI) {
+        getMedia = getMediaOldAPI.bind(navigator);
+    }
 
     //
 
@@ -66,7 +72,7 @@
 
         videoElement.addEventListener('loadeddata', readyListener);
 
-        navigator.getMedia({ video: true }, function (stream) {
+        getMedia({ video: true }, function (stream) {
 
             onStreaming();
 
@@ -90,7 +96,7 @@
      */
     function startVideoStreaming(callback) {
 
-        if(navigator.getMedia) {
+        if(getMedia) {
 
             // Some browsers apparently have support for video streaming because of the
             // presence of the getUserMedia function, but then do not answer our
